@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardápio Digital com Admin</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Cardápio Digital</h1>
+</header>
+
+<div class="nav">
+    <button id="nav-menu" class="active">Ver Cardápio</button>
+    <button id="nav-admin">Admin</button>
+</div>
+
+<div id="app">
+    <div class="container" id="user-view">
+        <h2>Cardápio</h2>
+        <div id="menu-list">
+            <!-- Menu items will be injected here by JS -->
+        </div>
+
+        <div class="cart">
+            <h2>Carrinho</h2>
+            <ul id="cart-items">
+                <!-- Cart items will be injected here by JS -->
+            </ul>
+            <p><strong>Total: R$ <span id="cart-total">0.00</span></strong></p>
+            <button id="checkout-btn" class="checkout-button">Finalizar Pedido</button>
+        </div>
+    </div>
+
+    <div class="container" id="admin-view" style="display:none;">
+        <h2>Painel do Administrador</h2>
+        <div class="admin">
+            <h3>Configurações da Loja</h3>
+            <div id="store-config-form">
+                <input type="text" id="storeName" placeholder="Nome da Loja">
+                <label for="storeColor">Cor Principal:</label>
+                <input type="color" id="storeColor" value="#ff5722">
+                <button id="save-config-btn">Salvar Configurações</button>
+            </div>
+        </div>
+        <div class="admin">
+            <h3>Adicionar Novo Item</h3>
+            <form id="add-item-form">
+                <input type="text" id="item-name" placeholder="Nome do prato" required>
+                <input type="text" id="item-description" placeholder="Descrição" required>
+                <input type="number" id="item-price" placeholder="Preço" step="0.01" min="0" required>
+                <input type="url" id="item-image" placeholder="URL da Imagem">
+                <button type="submit">Adicionar Item</button>
+            </form>
+        </div>
+        <div class="admin-menu-list">
+             <h3>Itens do Cardápio</h3>
+             <div id="admin-menu-items">
+                 <!-- Admin menu items will be rendered here -->
+             </div>
+        </div>
+    </div>
+</div>
+
+<div id="checkoutModal">
+    <div class="modal-content">
+        <span id="close-modal" class="close-button">&times;</span>
+        <h2>Finalizar Pedido</h2>
+        <form id="checkout-form">
+            <input type="text" id="customer-name" placeholder="Seu Nome" required>
+            <textarea id="customer-address" placeholder="Seu Endereço" required></textarea>
+            <select id="payment-method" required>
+                <option value="" disabled selected>Forma de pagamento</option>
+                <option value="dinheiro">Dinheiro</option>
+                <option value="cartao">Cartão de Crédito/Débito</option>
+                <option value="pix">PIX</option>
+            </select>
+            <button type="submit">Confirmar Pedido</button>
+        </form>
+    </div>
+</div>
+
+<div id="printable">
+    <!-- Order summary for printing -->
+</div>
+
+<script type="importmap">
+{
+    "imports": {}
+}
+</script>
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
